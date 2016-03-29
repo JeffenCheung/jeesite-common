@@ -1,0 +1,49 @@
+      [sql] Executing resource: E:\workspace_jeesite\jeesite\db\act\create\activ
+iti.oracle.create.identity.sql
+      [sql] 555 of 696 SQL statements executed successfully
+   [dbunit] Executing operation: INSERT
+   [dbunit]           on   file: E:\workspace_jeesite\jeesite\db\sys\jeesite_dat
+a.xls
+   [dbunit]           with format: xls
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 02:10 min
+[INFO] Finished at: 2015-05-25T10:57:22+08:00
+[INFO] Final Memory: 21M/265M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:
+run (default-cli) on project jeesite: An Ant BuildException has occured: org.dbu
+nit.DatabaseUnitException: java.sql.SQLException: 关闭的连接
+[ERROR] around Ant part ...<dbunit schema="${jdbc.username}" userid="${jdbc.user
+name}" driver="${jdbc.driver}" password="${jdbc.password}" url="${jdbc.url}">...
+ @ 22:133 in E:\workspace_jeesite\jeesite\target\antrun\build-main.xml
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e swit
+ch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please rea
+d the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionE
+xception
+系统找不到指定的文件。
+'库并导入初始数据。' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'并恢复初始状态。' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'牍乇沾翱凇?echo.' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+'畔' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+请按任意键继续. . .
+
+///////////////////solution/////////////
+删除pom.xml里L980的建库sql，再执行一遍init-db.bat单插xls data即可sucess：
+via. | <sql driver="${jdbc.driver}" ...
+
+question2：
+echo script NG
+solution：delete the sciprt echo/rem/pause
