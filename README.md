@@ -2,8 +2,9 @@
 
 ## 平台简介
 
+Pactera JeeSite project fork from jeesite 1.2.7 of ThinkGem
+
 Pactera JeeSite是基于多个优秀的开源项目，高度整合封装而成的高效，高性能，强安全性的**开源**Java EE快速开发平台。
-Pactera JeeSite project fork from jeesite1.2.7)
 Pactera JeeSite本身是以Spring Framework为核心容器，Spring MVC为模型视图控制器，MyBatis为数据访问层，
 Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Activit为工作流引擎。
 
@@ -34,18 +35,22 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 7.	操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
 8.	连接池监视：监视当期系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 9.	工作流引擎：实现业务工单流转、在线流程设计器。
+10.	职务管理：职务数据进行管理，如：编码、名称、描述、级别等。since 1.2.9
+11.	语言管理：数据项存储中英双语。since 1.2.8
+12.	日志监控：统计各模块使用频次，eCharts Bar柱状图展示。since 1.2.8
 
 ## 为何选择Pactera JeeSite
 
 1. 使用 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0) 协议，源代码完全开源，无商业限制。
 2. 使用目前主流的Java EE开发框架，简单易学，学习成本低。
-3. 数据库无限制，目前支持MySql、Oracle，可扩充SQL Server、PostgreSQL、H2等。
+3. 数据库无限制，目前支持MySql、Oracle，可扩充SQL Server、PostgreSQL、H2等。支持多数据源。sinc 1.2.10
 4. 模块化设计，层次结构清晰。内置一系列企业信息管理的基础功能。
 5. 操作权限控制精密细致，对所有管理链接都进行权限验证，可控制到按钮。
 6. 数据权限控制精密细致，对指定数据集权限进行过滤，七种数据权限可供选择。
 7. 提供在线功能代码生成工具，提高开发效率及质量。
 8. 提供常用工具类封装，日志、缓存、验证、字典、组织机构等，常用标签（taglib），获取当前组织机构、字典等数据。
 9. 兼容目前最流行浏览器（IE7+、Chrome、Firefox）IE6也支持，但体验效果差。
+10. 模块以maven artifact的项目形式进行聚合发布，引入cargo自动部署持续集成。since 1.2.9
 
 ## 技术选型
 
@@ -70,6 +75,7 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 * CSS框架：Twitter Bootstrap 2.3.1。
 * 客户端验证：JQuery Validation Plugin 1.11。
 * 富文本：CKEcitor
+* markdown：markdown-editor, sinc 1.2.10
 * 文件管理：CKFinder
 * 动态页签：Jerichotab
 * 手机端框架：Jingle
@@ -84,7 +90,7 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 * 服务器中间件：在Java EE 5规范（Servlet 2.5、JSP 2.1）下开发，支持应用服务器中间件
 有Tomcat 6、Jboss 7、WebLogic 10、WebSphere 8。
 * 数据库支持：目前仅提供MySql和Oracle数据库的支持，但不限于数据库，平台留有其它数据库支持接口，
-可方便更改为其它数据库，如：SqlServer 2008、MySql 5.5、H2等
+可方便更改为其它数据库，如：SqlServer 2008、MySql 5.5、H2等，支持多数据源（1.2.9）
 * 开发环境：Java EE、Eclipse、Maven、Git
 
 ## 安全考虑
@@ -103,7 +109,7 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 3. 根据修改参数创建对应MySql或Oracle数据库用户和参数。
 4. 运行bin\init-db.bat脚本，即可导入表结构及演示数据(linux操作系统：在控制台中切换至项目根目录，运行命令：mvn antrun:run -Pinit-db)
 5. 运行bin\run-tomcat7.bat或bin\run-jetty.bat，启动Web服务器（第一次运行，需要下载依赖jar包，请耐心等待）。
-6. 最高管理员账号，用户名：thinkgem 密码：admin
+6. 最高管理员账号，用户名：thinkgem 密码：admin（或：jeffen/jeffen）
 
 ## 常见问题
 
@@ -117,7 +123,8 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 
 ## 如何交流、反馈、参与贡献？
 
-* QQ：134184657
+* Version: pactera jeesite v1.2.8+
+* QQ：34184657
 * E-mail：jeffencheung@gmail.com
 * GitHub：<https://github.com/JeffenCheung/jeesite-common>
 * 开源中国：<http://git.oschina.net/jeffen/pactera-jeesite>
