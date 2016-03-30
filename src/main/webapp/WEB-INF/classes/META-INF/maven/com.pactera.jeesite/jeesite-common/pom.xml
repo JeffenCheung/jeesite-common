@@ -3,7 +3,7 @@
 
   <groupId>com.pactera.jeesite</groupId>
   <artifactId>jeesite-common</artifactId>
-  <version>1.2.10-SNAPSHOT</version>
+  <version>1.2.10</version>
   <packaging>jar</packaging>
 
   <name>jeesite-common</name>
@@ -1105,9 +1105,9 @@
 	<!-- [release github step 1] : $mvn release:prepare 发布准备SCM信息
 	 -->
 	<scm>
-	  <connection>scm:git:git://github.com/JeffenCheung/jeesite-common.git</connection>
-	  <url>scm:git:git://github.com/JeffenCheung/jeesite-common.git</url>
-	  <developerConnection>scm:git:git://github.com/JeffenCheung/jeesite-common.git</developerConnection>
+	  <connection>scm:git:git@github.com:JeffenCheung/jeesite-common.git</connection>
+	  <url>https://github.com/JeffenCheung/jeesite-common.git</url>
+	  <developerConnection>scm:git:[fetch=]central[push=]origin</developerConnection>
 	  <tag>jeesite-common-1.2.10</tag>
   </scm>
 </project>

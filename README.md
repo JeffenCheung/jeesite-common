@@ -1,9 +1,9 @@
-# Pactera JeeSite 企业信息化快速开发平台 V1.2.8
+# Pactera JeeSite 企业信息化快速开发平台 V1.2.10
 
 ## 平台简介
 
 Pactera JeeSite是基于多个优秀的开源项目，高度整合封装而成的高效，高性能，强安全性的**开源**Java EE快速开发平台。
-
+Pactera JeeSite project fork from jeesite1.2.7)
 Pactera JeeSite本身是以Spring Framework为核心容器，Spring MVC为模型视图控制器，MyBatis为数据访问层，
 Apache Shiro为权限授权层，Ehcahe对常用数据进行缓存，Activit为工作流引擎。
 
@@ -154,3 +154,5 @@ Hibernate性能上定不是问题。但对于大多数情况下，真正掌握Hi
 上述纯属个人观点，欢迎指正（jeffencheung@gmail.com）。
 
 如果你仍然喜欢Hibernate，请点击[下载JeeSite Hibernate版本](https://github.com/thinkgem/jeesite/tree/master_hibernate)。
+
+
