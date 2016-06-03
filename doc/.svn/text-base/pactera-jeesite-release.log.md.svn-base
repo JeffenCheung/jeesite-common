@@ -244,7 +244,33 @@ http://219.143.215.116:8088/svn/产品/jeesite/branches/pactera-jeesite-1.2.10.Z
 #### [2016/3/23]
 ##### pactera-jeesite v1.2.10 release log:
 1) optimization: claim to do list, add office data scope filter for kind of DATA_SCOPE_OFFICE* role.
-* 判定流程发起人所在部门跟当前部门审批人是否在同一个组织
+* 判定流程发起人所在部门跟当前部门审批人是否在同一个组织，
+待办签收列表，角色的数据权限设置为“所在部门及以下数据/所在部门数据”时，
+可自动进行跨部门待办过滤（默认开启，可配置关闭）
 * 【同部门测试账户】 je1/je1   sd_jsb/admin
 * 【不同部门测试账户】lx_admin/admin
-2) optimization: 组织机构异步加载(ajax)则通过sql遍历tree，否则内存递归遍历tree
+2) optimization: 组织机构异步加载(ajax)则通过sql遍历tree，否则内存递归遍历tree(Coding...)
+
+#### [2016/4/1]
+##### pactera-jeesite v1.2.10 release log:
+1) optimization: merge latest src from released github of ThinkGem.
+2) optimization: move rest from web to oa project
+3) add: (CI)Hudson>Jenkins continuous integration.
+
+#### [2016/4/11]
+##### pactera-jeesite v1.2.10 release log:
+2) optimization: add bottom-sticker.js for form-actions and list-pagination.
+3) branches: pactera-jeesite-1.2.10.SC.bi for 山航常旅客和渠道项目 since V1.2.10
+4) add: findbugs plugin for Jenkins of CI. / jetty plugin for booting.
+
+#### [2016/4/14]
+##### pactera-jeesite v1.2.11-SNAPSHOT release log:
+1) release: 1.2.11-SNAPSHOT
+2）fixed: high warning by findbugs
+3）optimization: parent pom setting for extends
+4）fixed: Cancel rendering oa nofity info while the project of web dist dose not buildend the related oa artifact 
+	,at the mean while global config is setted by oa.notify.remind.interval=0.
+
+#### [2016/4/19]
+##### pactera-jeesite v1.2.11-SNAPSHOT release log:
+1) add: background images cycling slideshow for login page.

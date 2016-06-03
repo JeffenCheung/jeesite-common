@@ -27,11 +27,6 @@ import com.thinkgem.jeesite.modules.sys.entity.AuthenticationInfo;
  * @email jeffencheung@gmail.com
  * @version 0.1
  */
-// @RunWith(JUnit4ClassRunner.class)
-// @ContextConfiguration(locations = "classpath:spring-context.xml")
-// @Transactional
-// @TransactionConfiguration(transactionManager = "transactionManager",
-// defaultRollback = true)
 public class RSETServiceClientCommon {
 
 	/**
@@ -81,9 +76,10 @@ public class RSETServiceClientCommon {
 		user.setPassword("jeffen");
 		req = JsonMapper.toJsonString(user);
 
-		client.path("login/doPostAuthenticationInfoRS")
-				.accept(MediaType.APPLICATION_FORM_URLENCODED)
-				.post(user, AuthenticationInfo.class);
+		System.out.println("testLoginRS().response=" + 
+				client.path("login/doPostAuthenticationInfoRS")
+					.accept(MediaType.APPLICATION_FORM_URLENCODED)
+					.post(user, AuthenticationInfo.class).getSuccess());
 	}
 
 }

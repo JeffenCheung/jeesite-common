@@ -5,7 +5,6 @@ package com.thinkgem.jeesite.common.web;
 
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.thinkgem.jeesite.common.beanvalidator.BeanValidators;
 import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.utils.DateUtils;
+import com.thinkgem.jeesite.modules.sys.utils.MutiLangUtils;
 
 /**
  * 控制器支持类
@@ -137,6 +137,21 @@ public abstract class BaseController {
 	 */
 	protected void addMessage(Model model, String... messages) {
 		model.addAttribute("message", messageditor(messages).toString());
+	}
+
+	/**
+	 * 添加Flash消息
+	 * 
+	 * 演示模式，不允许操作！ The operation is not allowed in demo mode！
+	 * 
+	 * @param redirectAttributes
+	 * 
+	 * @author Jeffen
+	 * @since v1.2.11 2016/5/20
+	 */
+	protected void addMessage4DemoMode(RedirectAttributes redirectAttributes) {
+		addMessage(redirectAttributes, MutiLangUtils.getLangDef(
+				"common.demo.mode.warn", "演示模式，不允许操作！"));
 	}
 	
 	/**

@@ -134,7 +134,7 @@ public class OfficeController extends BaseController {
 	@RequestMapping(value = "save")
 	public String save(Office office, Model model, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/office/";
 		}
 		if (!beanValidator(model, office)){
@@ -165,7 +165,7 @@ public class OfficeController extends BaseController {
 	@RequestMapping(value = "delete")
 	public String delete(Office office, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/office/list";
 		}
 //		if (Office.isRoot(id)){

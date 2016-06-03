@@ -1,99 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.pactera.jeesite</groupId>
+<parent>
+	<groupId>com.pactera.jeesite</groupId>
+	<artifactId>aggregator</artifactId>
+	<version>0.0.1</version>
+	<relativePath>../aggregator</relativePath>
+</parent>
+	
   <artifactId>jeesite-common</artifactId>
-  <version>1.2.10</version>
+  <version>${pactera.jeesite.version}</version>
   <packaging>jar</packaging>
 
   <name>jeesite-common</name>
+  <url>http://jeffencheung.github.com/jeesite-common</url>
   <description>common是基础工程，里面是jeesite公共的代码</description>
-	
-	<!-- 项目属性 -->
-	<properties>
-		
-		<!-- main version setting -->
-		<spring.version>4.0.8.RELEASE</spring.version>
-		<cxf.version>2.7.3</cxf.version>
-		<validator.version>5.1.1.Final</validator.version>
-		<mybatis.version>3.2.8</mybatis.version>
-		<mybatis-spring.version>1.2.2</mybatis-spring.version>
-		<druid.version>1.0.11</druid.version>
-		<ehcache.version>2.6.9</ehcache.version>
-		<ehcache-web.version>2.0.4</ehcache-web.version>
-		<shiro.version>1.2.3</shiro.version>
-		<sitemesh.version>2.4.2</sitemesh.version>
-		<activiti.version>5.15.1</activiti.version>
-		
-		<!-- tools version setting -->
-		<slf4j.version>1.7.7</slf4j.version>
-		<commons-lang3.version>3.3.2</commons-lang3.version>
-		<commons-io.version>2.4</commons-io.version>
-		<commons-codec.version>1.9</commons-codec.version>
-		<commons-fileupload.version>1.3.1</commons-fileupload.version>
-		<commons-beanutils.version>1.9.1</commons-beanutils.version>
-		<jackson.version>2.2.3</jackson.version>
-		<jackson.mapper.version>1.9.12</jackson.mapper.version>
-		<fastjson.version>1.1.40</fastjson.version>
-		<xstream.version>1.4.7</xstream.version>
-		<guava.version>17.0</guava.version>
-		<dozer.version>5.5.1</dozer.version>
-		<poi.version>3.9</poi.version>
-		<freemarker.version>2.3.20</freemarker.version>
-		<rs.version>1.1.1</rs.version>
-		<junit.version>4.11</junit.version>
-		
-		<!-- jdbc driver setting -->
-		<mysql.driver.version>5.1.30</mysql.driver.version>
-		<oracle.driver.version>10.2.0.4.0</oracle.driver.version>
-		<mssql.driver.version>1.3.1</mssql.driver.version>
-	    
-		<!-- environment setting -->
-		<jdk.version>1.6</jdk.version>
-		<tomcat.version>2.2</tomcat.version>
-		<jetty.version>7.6.14.v20131031</jetty.version>
-		<webserver.port>8181</webserver.port>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<argLine>-Dfile.encoding=UTF-8</argLine>
-		<downloadSources>true</downloadSources>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-	</properties>
 	
 	<!-- 设定主仓库，按设定顺序进行查找。 -->
 	<repositories>
-	
-		<!-- 如有Nexus私服, 取消注释并指向正确的服务器地址.
-		<repository>
-			<id>nexus-repos</id>
-			<name>Team Nexus Repository</name>
-			<url>http://192.168.11.36:8888/nexus/content/groups/public</url>
-		</repository> -->
-		
-		
-		<!-- Pactera Haya Nexus private maven service
-			http://192.168.5.5:8083/nexus/index.html
-			admin/admin123
-			add by jeffen@pactera 2015/6/11
-		 -->
-		<repository>
-			<id>pactera-haya-nexus-repos</id>
-			<name>Pactera Team Nexus Repository</name>
-			<url>http://192.168.5.5:8083/nexus/content/</url>
-		</repository>
-		
-		<repository>
-			<id>pactera-haya-nexus-repos-ooo</id>
-			<name>Pactera Team Nexus Repository Out Of Office</name>
-			<url>http://219.143.215.116:8083/nexus/conten/</url>
-		</repository>
-		
-		<repository>
-            <id>oschina-repos</id>
-            <name>Oschina Releases</name>
-            <url>http://maven.oschina.net/content/groups/public</url>
-        </repository>
         
         <repository>
             <id>java-repos</id>
@@ -330,32 +254,6 @@
 			<artifactId>pinyin4j</artifactId>
 			<version>2.5.0</version>
 		</dependency>
-		
-		<!-- 已提供provided依赖范围，编译compile和测试test有效，运行时runtime容器tomcat已经提供，无需重新引入 -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- <dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency> -->
 		<!-- WEB end -->
 
 		<!-- CACHE begin -->
@@ -640,11 +538,6 @@
 		
 		<!-- TEST begin -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
@@ -719,18 +612,6 @@
 	<build>
 		<outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/classes/</outputDirectory>
 		<plugins>
-			<!-- Compiler 插件, 设定JDK版本 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<showWarnings>true</showWarnings>
-				</configuration>
-			</plugin>
 			
 			<!-- JSP 预编译插件  jspweb.xml
 			<plugin>
@@ -912,30 +793,6 @@
 				</configuration>
 			</plugin>
 			
-			<!-- resource插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
-			</plugin>
-			
-			<!-- install插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>2.4</version>
-			</plugin>
-			
-			<!-- clean插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.5</version>
-			</plugin>
-			
 			<!-- ant插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -943,37 +800,6 @@
 				<version>1.7</version>
 			</plugin>
 			
-			<!-- dependency插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.5.1</version>
-			</plugin>
-
-			<!-- source插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			
-			<!-- [release step 2] :plugin 发布标签基础目录 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<!-- $mvn release:perform -->
-				<configuration>
-					<tagBase>http://192.168.5.5:8088/svn/产品/jeesite/tags</tagBase>
-				</configuration>
-				
-			</plugin>
 		</plugins>
 		
 		<defaultGoal>compile</defaultGoal>
@@ -1061,53 +887,4 @@
 			</build>
 		</profile>
 	</profiles>
-	
-	<!-- 开发者信息 -->
-	<developers>  
-		<developer>
-			<id>jeffen</id>
-			<name>JeffenCheung</name>
-			<email>jeffencheung at gmail.com</email>
-			<roles><role>Project lead</role></roles>
-			<timezone>+8</timezone>
-		</developer>
-	</developers>
-	
-	<organization>
-		<name>pactera</name>
-		<url>http://pactera.com</url>
-	</organization>
-	
-	<!-- 配置部署的企业仓库
-		[out of office]219.143.215.116:8083
-		[in-house]192.168.5.5:8083
-	 -->
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>Nexus Rlease Repository</name>
-			<url>http://192.168.5.5:8083/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>Nexus Snapshots Repository</name>
-			<url>http://192.168.5.5:8083/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-	
-	<!-- [release step 1] : $mvn release:prepare 发布准备SCM信息 
-	<scm>
-		<connection>scm:svn:http://192.168.5.5:8088/svn/产品/jeesite/trunk</connection>
-		<developerConnection>scm:svn:http://192.168.5.5:8088/svn/产品/jeesite/trunk</developerConnection>
-		<url>http://192.168.5.5:8088/svn/产品/jeesite/trunk</url>
-	</scm>-->
-	
-	<!-- [release github step 1] : $mvn release:prepare 发布准备SCM信息
-	 -->
-	<scm>
-	  <connection>scm:git:git@github.com:JeffenCheung/jeesite-common.git</connection>
-	  <url>https://github.com/JeffenCheung/jeesite-common.git</url>
-	  <developerConnection>scm:git:[fetch=]central[push=]origin</developerConnection>
-	  <tag>jeesite-common-1.2.10</tag>
-  </scm>
 </project>

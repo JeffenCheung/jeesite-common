@@ -114,6 +114,22 @@ public class UserController extends BaseController {
         model.addAttribute("page", page);
 		return "modules/sys/userList";
 	}
+	
+	@RequiresPermissions("sys:user:view")
+	@RequestMapping(value = {"listJq"})
+	public String listJq(User user, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<User> page = systemService.findUser(new Page<User>(request, response), user);
+        model.addAttribute("page", page);
+		return "modules/sys/userList-jq";
+	}
+	
+	@ResponseBody
+	@RequiresPermissions("sys:user:view")
+	@RequestMapping(value = {"listData"})
+	public Page<User> listData(User user, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<User> page = systemService.findUser(new Page<User>(request, response), user);
+		return page;
+	}
 
 	@RequiresPermissions("sys:user:view")
 	@RequestMapping(value = "form")
@@ -136,7 +152,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "save")
 	public String save(User user, HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/user/list?repage";
 		}
 		// 修正引用赋值问题，不知道为何，Company和Office引用的一个实例地址，修改了一个，另外一个跟着修改。
@@ -178,7 +194,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "delete")
 	public String delete(User user, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/user/list?repage";
 		}
 		if (UserUtils.getUser().getId().equals(user.getId())){
@@ -224,7 +240,7 @@ public class UserController extends BaseController {
     @RequestMapping(value = "import", method=RequestMethod.POST)
     public String importFile(MultipartFile file, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/user/list?repage";
 		}
 		try {

@@ -84,7 +84,7 @@ public class RoleController extends BaseController {
 			return "redirect:" + adminPath + "/sys/role/?repage";
 		}
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/role/?repage";
 		}
 		if (!beanValidator(model, role)){
@@ -111,7 +111,7 @@ public class RoleController extends BaseController {
 			return "redirect:" + adminPath + "/sys/role/?repage";
 		}
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/role/?repage";
 		}
 //		if (Role.isAdmin(id)){
@@ -192,7 +192,7 @@ public class RoleController extends BaseController {
 	@RequestMapping(value = "outrole")
 	public String outrole(String userId, String roleId, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/role/assign?id="+roleId;
 		}
 		Role role = systemService.getRole(roleId);
@@ -225,7 +225,7 @@ public class RoleController extends BaseController {
 	@RequestMapping(value = "assignrole")
 	public String assignRole(Role role, String[] idsArr, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/role/assign?id="+role.getId();
 		}
 		StringBuilder msg = new StringBuilder();

@@ -27,11 +27,6 @@ import com.thinkgem.jeesite.modules.sys.entity.AuthenticationInfo;
  * @email jeffencheung@gmail.com
  * @version 0.1
  */
-// @RunWith(JUnit4ClassRunner.class)
-// @ContextConfiguration(locations = "classpath:spring-context.xml")
-// @Transactional
-// @TransactionConfiguration(transactionManager = "transactionManager",
-// defaultRollback = true)
 public class RSETServiceClientCommon {
 
 	/**

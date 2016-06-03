@@ -91,6 +91,10 @@ public class PostController extends BaseController {
 	@RequiresPermissions(PERMISSION_EDIT)
 	@RequestMapping(value = "save")
 	public String save(Post post, Model model, RedirectAttributes redirectAttributes) {
+		if(Global.isDemoMode()){
+			addMessage4DemoMode(redirectAttributes);
+			return URL_ADMIN_REPAGE;
+		}
 		if (!beanValidator(model, post)){
 			return form(post, model);
 		}
@@ -102,6 +106,10 @@ public class PostController extends BaseController {
 	@RequiresPermissions(PERMISSION_EDIT)
 	@RequestMapping(value = "delete")
 	public String delete(Post post, RedirectAttributes redirectAttributes) {
+		if(Global.isDemoMode()){
+			addMessage4DemoMode(redirectAttributes);
+			return URL_ADMIN_REPAGE;
+		}
 		postService.delete(post);
 		String physicalDelete = post.getPhysicalDelete().booleanValue()?" <span class='text-warning'>[注：物理删除]</span>":"";
 		addMessage(redirectAttributes, MutiLangUtils.getLang("common.delete.success.param", "【职位表】") + physicalDelete);
@@ -111,6 +119,10 @@ public class PostController extends BaseController {
 	@RequiresPermissions(PERMISSION_EDIT)
 	@RequestMapping(value = "deleteChecked")
 	public String deleteChecked(Post post, RedirectAttributes redirectAttributes) {
+		if(Global.isDemoMode()){
+			addMessage4DemoMode(redirectAttributes);
+			return URL_ADMIN_REPAGE;
+		}
 		postService.deleteList(post);
 		String physicalDelete = post.getPhysicalDelete().booleanValue()?" <span class='text-warning'>[注：物理删除]</span>":"";
 		addMessage(redirectAttributes, MutiLangUtils.getLang("common.delete.success.param", "【职位表】") + " （共批量删除 " + post.getCbRowDataIds().size() + " 条数据）" + physicalDelete);
@@ -120,6 +132,10 @@ public class PostController extends BaseController {
 	@RequiresPermissions(PERMISSION_DBA)
 	@RequestMapping(value = "truncateTable")
 	public String truncateTable(Post post, RedirectAttributes redirectAttributes) {
+		if(Global.isDemoMode()){
+			addMessage4DemoMode(redirectAttributes);
+			return URL_ADMIN_REPAGE;
+		}
 		postService.truncateTable(post);
 		addMessage(redirectAttributes, MutiLangUtils.getLang("common.delete.success.param", "【职位表，<span class='text-warning'>物理清空</span>】"));
 		return URL_ADMIN_REPAGE;
@@ -184,7 +200,7 @@ public class PostController extends BaseController {
 	public String importCsvFile(MultipartFile file,
 			RedirectAttributes redirectAttributes) throws Exception {
 		if (Global.isDemoMode()) {
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + Global.getAdminPath()
 					+ "/sys/post/?repage";
 		}
@@ -243,6 +259,10 @@ public class PostController extends BaseController {
 	@RequestMapping(value = "import/csv/template")
 	public String importCsvFileTemplate(HttpServletResponse response,
 			RedirectAttributes redirectAttributes) {
+		if(Global.isDemoMode()){
+			addMessage4DemoMode(redirectAttributes);
+			return URL_ADMIN_REPAGE;
+		}
 		try {
 			String fileName = "【职位表】数据导入模板.csv";
 

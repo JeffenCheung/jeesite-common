@@ -40,6 +40,14 @@ echo deploy to£º%to%\*
 echo redeploy files...
 call %XcopyArgs% %from% %to%
 
+set from=%workspace%\jeesite-web\sitemap
+set to=%CATALINA_HOME%\%web-context-root%\sitemap
+echo.
+echo deploy from£º%from%\*
+echo deploy to£º%to%\*
+echo redeploy files...
+call %XcopyArgs% %from% %to%
+
 echo.
 set from=%workspace%\jeesite-gen\src\main\resources
 set to=%CATALINA_HOME%\%web-context-root%\WEB-INF\classes
@@ -84,6 +92,16 @@ echo deploy from£º%from%\*
 echo deploy to£º%to%\*
 echo redeploy files...
 call %XcopyArgs% %from% %to%
+
+echo.
+set from=%workspace%\jeesite-web\src\main\webapp\WEB-INF\tlds
+set to=%CATALINA_HOME%\%web-context-root%\WEB-INF\tlds
+echo.
+echo deploy from£º%from%\*
+echo deploy to£º%to%\*
+echo redeploy files...
+call %XcopyArgs% %from% %to%
+
 
 echo.
 set from=%workspace%\jeesite-web\src\main\webapp\WEB-INF\views

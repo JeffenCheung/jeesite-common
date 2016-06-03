@@ -153,6 +153,7 @@ public class Global {
 	public static Boolean isDemoMode() {
 		String dm = getConfig("demoMode");
 		return "true".equals(dm) || "1".equals(dm);
+				//|| (!"FALSE".equals(dm.toUpperCase()) && !"0".equals(dm));
 	}
 	
 	/**

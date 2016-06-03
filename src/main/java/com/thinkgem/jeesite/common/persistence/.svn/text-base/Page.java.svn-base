@@ -197,7 +197,7 @@ public class Page<T> {
 		if (pageNo == first) {// 如果是首页
 			sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>\n");
 		} else {
-			sb.append("<li><a href=\"javascript:\" onclick=\""+funcName+"("+prev+","+pageSize+",'"+funcParam+"');\">&#171; 上一页</a></li>\n");
+			sb.append("<li><a  id=\"prevPage\" title=\"Ctrl+←\" href=\"javascript:\" onclick=\""+funcName+"("+prev+","+pageSize+",'"+funcParam+"');\">&#171; 上一页</a></li>\n");
 		}
 
 		int begin = pageNo - (length / 2);
@@ -250,7 +250,7 @@ public class Page<T> {
 		if (pageNo == last) {
 			sb.append("<li class=\"disabled\"><a href=\"javascript:\">下一页 &#187;</a></li>\n");
 		} else {
-			sb.append("<li><a href=\"javascript:\" onclick=\""+funcName+"("+next+","+pageSize+",'"+funcParam+"');\">"
+			sb.append("<li><a id=\"nextPage\" title=\"Ctrl+→\" href=\"javascript:\" onclick=\""+funcName+"("+next+","+pageSize+",'"+funcParam+"');\">"
 					+ "下一页 &#187;</a></li>\n");
 		}
 

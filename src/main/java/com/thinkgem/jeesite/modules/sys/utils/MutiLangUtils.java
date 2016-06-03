@@ -2,6 +2,8 @@ package com.thinkgem.jeesite.modules.sys.utils;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
 import com.thinkgem.jeesite.common.utils.StringUtil;
 import com.thinkgem.jeesite.modules.sys.dao.SysMutiLangDao;
@@ -29,8 +31,32 @@ public class MutiLangUtils {
 					mutiLangEntity.getLangContext());
 		}
 	}
+	
 
-	/** 取 sys_muti_lang.lang_key 的值返回当前语言的值 **/
+
+	/**
+	 * 取 sys_muti_lang.lang_key 的值返回当前语言的值，如果为空则设定默认值
+	 * 
+	 * @param langKey
+	 * @param defaultValue
+	 * @return
+	 * 
+	 * @author Jeffen
+	 * @since v1.2.11 2016/5/20
+	 */
+	public static String getLangDef(String langKey, String defaultValue) {
+		String lang = getLang(langKey);
+		if (StringUtils.isEmpty(lang) || langKey.equals(lang))
+			lang = defaultValue;
+		return lang;
+	}
+
+	/**
+	 * 根据 sys_muti_lang.lang_key 的值，返回当前语言的值
+	 * 
+	 * @param langKey
+	 * @return 当前语言的值，如果不存在value则返回key
+	 */
 	public static String getLang(String langKey) {
 
 		if (UserUtils.getSession().getAttribute("lang") != null) {
@@ -58,13 +84,20 @@ public class MutiLangUtils {
 		return langContext;
 	}
 
-	public static String getLang(String lanKey, String langArg) {
+	/**
+	 * 根据key从语言表取得对应信息，并根据参数通配符进行替换。
+	 * 
+	 * @param langKey 语言表sys_muti_lang.lang_key
+	 * @param langArg 参数通配符，半角逗号分割
+	 * @return
+	 */
+	public static String getLang(String langKey, String langArg) {
 		String langContext = StringUtil.getEmptyString();
 		if (StringUtil.isEmpty(langArg)) {
-			langContext = getLang(lanKey);
+			langContext = getLang(langKey);
 		} else {
 			String[] argArray = langArg.split(",");
-			langContext = getLang(lanKey);
+			langContext = getLang(langKey);
 
 			for (int i = 0; i < argArray.length; i++) {
 				String langKeyArg = argArray[i].trim();

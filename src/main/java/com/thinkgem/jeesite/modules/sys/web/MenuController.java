@@ -86,7 +86,7 @@ public class MenuController extends BaseController {
 			return "redirect:" + adminPath + "/sys/role/?repage";
 		}
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/menu/";
 		}
 		if (!beanValidator(model, menu)){
@@ -101,7 +101,7 @@ public class MenuController extends BaseController {
 	@RequestMapping(value = "delete")
 	public String delete(Menu menu, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/menu/";
 		}
 //		if (Menu.isRoot(id)){
@@ -133,7 +133,7 @@ public class MenuController extends BaseController {
 	@RequestMapping(value = "updateSort")
 	public String updateSort(String[] ids, Integer[] sorts, RedirectAttributes redirectAttributes) {
 		if(Global.isDemoMode()){
-			addMessage(redirectAttributes, "演示模式，不允许操作！");
+			addMessage4DemoMode(redirectAttributes);
 			return "redirect:" + adminPath + "/sys/menu/";
 		}
     	for (int i = 0; i < ids.length; i++) {

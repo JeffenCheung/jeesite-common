@@ -65,6 +65,10 @@ public class SysMutiLangController extends BaseController {
 	@RequiresPermissions("sys:sysMutiLang:edit")
 	@RequestMapping(value = "save")
 	public String save(SysMutiLang sysMutiLang, Model model, RedirectAttributes redirectAttributes) {
+		if(Global.isDemoMode()){
+			addMessage4DemoMode(redirectAttributes);
+			return "redirect:"+Global.getAdminPath()+"/sys/sysMutiLang/?repage";
+		}
 		if (!beanValidator(model, sysMutiLang)){
 			return form(sysMutiLang, model);
 		}
@@ -76,6 +80,10 @@ public class SysMutiLangController extends BaseController {
 	@RequiresPermissions("sys:sysMutiLang:edit")
 	@RequestMapping(value = "delete")
 	public String delete(SysMutiLang sysMutiLang, RedirectAttributes redirectAttributes) {
+		if(Global.isDemoMode()){
+			addMessage4DemoMode(redirectAttributes);
+			return "redirect:"+Global.getAdminPath()+"/sys/sysMutiLang/?repage";
+		}
 		sysMutiLangService.delete(sysMutiLang);
 		addMessage(redirectAttributes, "删除语言成功");
 		return "redirect:"+Global.getAdminPath()+"/sys/sysMutiLang/?repage";

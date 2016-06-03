@@ -3,7 +3,13 @@ END
 K 25
 svn:wc:ra_dav:version-url
 V 141
-/svn/%E4%BA%A7%E5%93%81/!svn/ver/2515/jeesite/trunk/jeesite-common/doc/10.%E5%8D%87%E7%BA%A7%E8%A7%84%E5%88%92%E5%92%8C%E6%97%A5%E5%BF%97.xls
+/svn/%E4%BA%A7%E5%93%81/!svn/ver/2549/jeesite/trunk/jeesite-common/doc/10.%E5%8D%87%E7%BA%A7%E8%A7%84%E5%88%92%E5%92%8C%E6%97%A5%E5%BF%97.xls
+END
+2.1.父子项目继承和聚合.docx
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/%E4%BA%A7%E5%93%81/!svn/ver/2549/jeesite/trunk/jeesite-common/doc/2.1.%E7%88%B6%E5%AD%90%E9%A1%B9%E7%9B%AE%E7%BB%A7%E6%89%BF%E5%92%8C%E8%81%9A%E5%90%88.docx
 END
 4.代码生成器的应用.docx
 K 25
@@ -11,11 +17,29 @@ svn:wc:ra_dav:version-url
 V 150
 /svn/%E4%BA%A7%E5%93%81/!svn/ver/2515/jeesite/trunk/jeesite-common/doc/4.%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E5%BA%94%E7%94%A8.docx
 END
+6.工作流的应用实例.docx
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/%E4%BA%A7%E5%93%81/!svn/ver/2519/jeesite/trunk/jeesite-common/doc/6.%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B.docx
+END
+12.持续集成CI(ContinuousIntegration).docx
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/%E4%BA%A7%E5%93%81/!svn/ver/2549/jeesite/trunk/jeesite-common/doc/12.%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90CI(ContinuousIntegration).docx
+END
 3.内置组件的应用.docx
 K 25
 svn:wc:ra_dav:version-url
 V 141
-/svn/%E4%BA%A7%E5%93%81/!svn/ver/2515/jeesite/trunk/jeesite-common/doc/3.%E5%86%85%E7%BD%AE%E7%BB%84%E4%BB%B6%E7%9A%84%E5%BA%94%E7%94%A8.docx
+/svn/%E4%BA%A7%E5%93%81/!svn/ver/2554/jeesite/trunk/jeesite-common/doc/3.%E5%86%85%E7%BD%AE%E7%BB%84%E4%BB%B6%E7%9A%84%E5%BA%94%E7%94%A8.docx
+END
+2.2.maven conmmand.docx
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/%E4%BA%A7%E5%93%81/!svn/ver/2549/jeesite/trunk/jeesite-common/doc/2.2.maven%20conmmand.docx
 END
 11.PacteraJeesite1.2.10_Show_20160219.pptx
 K 25
@@ -27,5 +51,5 @@ pactera-jeesite-release.log.md
 K 25
 svn:wc:ra_dav:version-url
 V 101
-/svn/%E4%BA%A7%E5%93%81/!svn/ver/2517/jeesite/trunk/jeesite-common/doc/pactera-jeesite-release.log.md
+/svn/%E4%BA%A7%E5%93%81/!svn/ver/2554/jeesite/trunk/jeesite-common/doc/pactera-jeesite-release.log.md
 END

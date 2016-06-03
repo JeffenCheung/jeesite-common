@@ -1,8 +1,8 @@
-# Pactera JeeSite 企业信息化快速开发平台 V1.2.10
-
+# Pactera JeeSite 企业信息化快速开发平台 V1.2.11-SNAPSHOT
+___
 ## 平台简介
 
-Pactera JeeSite project fork from jeesite 1.2.7 of ThinkGem
+Pactera JeeSite project fork from [jeesite](http://jeesite.com) 1.2.7 of [ThinkGem](thinkgem@163.com)
 
 Pactera JeeSite是基于多个优秀的开源项目，高度整合封装而成的高效，高性能，强安全性的**开源**Java EE快速开发平台。
 Pactera JeeSite本身是以Spring Framework为核心容器，Spring MVC为模型视图控制器，MyBatis为数据访问层，
@@ -14,12 +14,21 @@ Pactera JeeSite主要定位于企业信息化领域，已内置企业信息化�
 采用分层设计、双重验证、提交数据安全编码、密码加密、访问验证、数据权限验证。
 使用Maven做项目管理，提高项目的易开发性、扩展性。
 
-Pactera JeeSite目前包括以下三大模块，系统管理（SYS）模块、
+Pactera JeeSite目前包括以下几大模块，系统管理（SYS）模块、
 内容管理（CMS）模块、在线办公（OA）模块、代码生成（GEN）模块。 **系统管理模块** ，包括企业组织架构（用户管理、机构管理、区域管理）、
 菜单管理、角色权限管理、字典管理等功能； **内容管理模块** ，包括内容管理（文章、链接），栏目管理、站点管理、
 公共留言、文件管理、前端网站展示等功能； **在线办公模块** ，提供简单的请假流程实例。
 
-Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存工具、服务器端验证、数据字典、当前组织机构数据
+Pactera JeeSite基于模块组件划分，Since1.2.10开始抽取了几个maven project进行继承和聚合，提高代码组件颗粒度，实现工程级独立版本迭代和复用。
+几个核心组件工程包括：
+[推荐] [jeesite-gen](https://github.com/JeffenCheung/jeesite-gen)，代码生成器组件工程；
+[可选] [jeesite-cms](https://github.com/JeffenCheung/jeesite-cms)，内容管理组件工程；
+[可选] [jeesite-oa](https://github.com/JeffenCheung/jeesite-oa)，办公自动化组件工程；
+[可选] [jeesite-oa-core](https://github.com/JeffenCheung/jeesite-oa-core)，办公自动化核心组件工程；
+[可选] [jeesite-soa](https://github.com/JeffenCheung/jeesite-soa)，SOA接口服务组件；
+[必须] [jeesite-web](https://github.com/JeffenCheung/jeesite-web)，平台基础功能组件工程；
+
+Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存工具、服务器端验证、数据字典、多国语言、当前组织机构数据
 （用户、机构、区域）以及其它常用小工具等。另外还提供一个强大的在线 **代码生成** 工具，
 此工具提供简单的单表、一对多、树结构功能的生成，如果对外观要求不是很高，生成的功能就可以用了。
 如果你使用了Pactera JeeSite基础框架，就可以很高效的快速开发出，优秀的信息管理系统。
@@ -27,7 +36,7 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 ## 内置功能
 
 1.	用户管理：用户是系统操作者，该功能主要完成系统用户配置。
-2.	机构管理：配置系统组织机构（公司、部门、小组），树结构展现，可随意调整上下级。
+2.	机构管理：配置系统组织机构（公司、部门、小组），树结构展现，可随意调整上下级。所有树支持异步加载的开关，防止大树崩溃，since 1.2.9
 3.	区域管理：系统城市区域模型，如：国家、省市、地市、区县的维护。
 4.	菜单管理：配置系统菜单，操作权限，按钮权限标识等。
 5.	角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
@@ -43,7 +52,7 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 
 1. 使用 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0) 协议，源代码完全开源，无商业限制。
 2. 使用目前主流的Java EE开发框架，简单易学，学习成本低。
-3. 数据库无限制，目前支持MySql、Oracle，可扩充SQL Server、PostgreSQL、H2等。支持多数据源。sinc 1.2.10
+3. 数据库无限制，目前支持MySql、Oracle，可扩充SQL Server、PostgreSQL、H2等。支持多数据源。since 1.2.10
 4. 模块化设计，层次结构清晰。内置一系列企业信息管理的基础功能。
 5. 操作权限控制精密细致，对所有管理链接都进行权限验证，可控制到按钮。
 6. 数据权限控制精密细致，对指定数据集权限进行过滤，七种数据权限可供选择。
@@ -68,6 +77,8 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 * 缓存框架：Ehcache 2.6、Redis
 * 日志管理：SLF4J 1.7、Log4j
 * 工具类：Apache Commons、Jackson 2.2、Xstream 1.4、Dozer 5.3、POI 3.9
+* 服务框架：cxf 2.7.3 ,since 1.2.9
+* 持续集成框架及插件支持： Jenkins 1.6 、FindBugs 2.5.2 ,since 1.2.11-SNAPSHAOT
 
 2、前端
 
@@ -75,7 +86,7 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 * CSS框架：Twitter Bootstrap 2.3.1。
 * 客户端验证：JQuery Validation Plugin 1.11。
 * 富文本：CKEcitor
-* markdown：markdown-editor, sinc 1.2.10
+* markdown：markdown-editor, since 1.2.10
 * 文件管理：CKFinder
 * 动态页签：Jerichotab
 * 手机端框架：Jingle
@@ -84,6 +95,10 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 * 下拉选择框：jQuery Select2
 * 树结构控件：jQuery zTree
 * 日期控件： My97DatePicker
+* 表头固定：table-fixed-header ,since 1.2.8
+* 图表： Baidu eCharts，since 1.2.9
+* 底部固定：bottom-sticker ,since 1.2.10
+* 背景轮寻：jquery.cycle 3.0.3, since 1.2.11
 
 4、平台
 
@@ -91,7 +106,7 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 有Tomcat 6、Jboss 7、WebLogic 10、WebSphere 8。
 * 数据库支持：目前仅提供MySql和Oracle数据库的支持，但不限于数据库，平台留有其它数据库支持接口，
 可方便更改为其它数据库，如：SqlServer 2008、MySql 5.5、H2等，支持多数据源（1.2.9）
-* 开发环境：Java EE、Eclipse、Maven、Git
+* 开发环境：Java EE、Eclipse/MyEclipse、Maven、Git、plsql/toad/sqldeveloper
 
 ## 安全考虑
 
@@ -105,11 +120,12 @@ Pactera JeeSite 提供了常用工具进行封装，包括日志工具、缓存�
 ## 快速体验
 
 1. 具备运行环境：JDK1.6+、Maven3.0+、MySql5+或Oracle10g+。
-2. 修改src\main\resources\jeesite.properties文件中的数据库设置参数。
-3. 根据修改参数创建对应MySql或Oracle数据库用户和参数。
-4. 运行bin\init-db.bat脚本，即可导入表结构及演示数据(linux操作系统：在控制台中切换至项目根目录，运行命令：mvn antrun:run -Pinit-db)
-5. 运行bin\run-tomcat7.bat或bin\run-jetty.bat，启动Web服务器（第一次运行，需要下载依赖jar包，请耐心等待）。
+2. 修改src\main\resources\jeesite.properties文件中的数据库设置参数。参考[jeesite-web-dist](https://github.com/JeffenCheung/jeesite-web-dist)
+3. 根据修改参数创建对应MySql或Oracle数据库用户和参数。引入profile机制，进行差异化环境的配置，since 1.2.8
+4. ~~运行bin\init-db.bat脚本，即可导入表结构及演示数据(linux操作系统：在控制台中切换至项目根目录，运行命令：mvn antrun:run -Pinit-db)~~
+5. ~~运行bin\run-tomcat7.bat或bin\run-jetty.bat，启动Web服务器（第一次运行，需要下载依赖jar包，请耐心等待）。~~
 6. 最高管理员账号，用户名：thinkgem 密码：admin（或：jeffen/jeffen）
+7. since 1.2.10 需使用最新的方式聚合启动，【\doc\2.1.父子项目继承和聚合.docx】，推荐local build后非cargo方式手动启动。
 
 ## 常见问题
 
@@ -161,5 +177,4 @@ Hibernate性能上定不是问题。但对于大多数情况下，真正掌握Hi
 上述纯属个人观点，欢迎指正（jeffencheung@gmail.com）。
 
 如果你仍然喜欢Hibernate，请点击[下载JeeSite Hibernate版本](https://github.com/thinkgem/jeesite/tree/master_hibernate)。
-
 

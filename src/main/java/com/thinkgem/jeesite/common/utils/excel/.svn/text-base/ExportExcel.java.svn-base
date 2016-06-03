@@ -48,6 +48,8 @@ import com.thinkgem.jeesite.modules.sys.utils.DictUtils;
  * @version v1.2.8 2015-09-15 by jeffen@pactera
  * 					fixed NG: template headline comments position 
  * 					optimization: freeze pane(width, height)
+ * @version v1.2.1 2016-05-25 by jeffen@pactera
+ * 					fixed NG: modify cell style for Long
  */
 public class ExportExcel {
 	
@@ -339,7 +341,8 @@ public class ExportExcel {
 	 */
 	public Cell addCell(Row row, int column, Object val, int align, Class<?> fieldType){
 		Cell cell = row.createCell(column);
-		CellStyle style = styles.get("data"+(align>=1&&align<=3?align:""));
+		String styleKey = "data"+(align>=1&&align<=3?align:"");
+		CellStyle style = styles.get(styleKey);
 		try {
 			if (val == null){
 				cell.setCellValue("");
@@ -348,14 +351,20 @@ public class ExportExcel {
 			} else if (val instanceof Integer) {
 				cell.setCellValue((Integer) val);
 			} else if (val instanceof Long) {
+				
+				// clone cell style by jeffen@pactera 2016/5/25
+				style = cloneCellStyle(style, "LONG_" + styleKey, "0");
+	            
 				cell.setCellValue((Long) val);
 			} else if (val instanceof Double) {
 				cell.setCellValue((Double) val);
 			} else if (val instanceof Float) {
 				cell.setCellValue((Float) val);
 			} else if (val instanceof Date) {
-				DataFormat format = wb.createDataFormat();
-	            style.setDataFormat(format.getFormat("yyyy-MM-dd"));
+
+				// clone cell style by jeffen@pactera 2016/5/25
+				style = cloneCellStyle(style, "DATE_" + styleKey, "yyyy-MM-dd");
+				
 				cell.setCellValue((Date) val);
 			} else {
 				if (fieldType != Class.class){
@@ -371,6 +380,32 @@ public class ExportExcel {
 		}
 		cell.setCellStyle(style);
 		return cell;
+	}
+
+	/**
+	 * 克隆复用列单元格样式
+	 * 
+	 * @param style
+	 *            clone source
+	 * @param styleKey
+	 *            new style key
+	 * @param dataFormat
+	 *            formatted string
+	 * 
+	 * @author Jeffen
+	 * @since v1.2.11 2016/5/25
+	 * 
+	 */
+	public CellStyle cloneCellStyle(CellStyle style, String styleKey,
+			String dataFormat) {
+		if (!styles.containsKey(styleKey)) {
+			DataFormat format = wb.createDataFormat();
+			CellStyle styleC = wb.createCellStyle();
+			styleC.cloneStyleFrom(style);
+			styleC.setDataFormat(format.getFormat(dataFormat));
+			styles.put(styleKey, styleC);
+		}
+		return styles.get(styleKey);
 	}
 
 	/**
